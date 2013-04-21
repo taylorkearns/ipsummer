@@ -1,2 +1,2 @@
-## Lorem Ipsum, Fast and Customized
-Simple Sinatra app that serves up lorem ipsum text via URL routing. Fast access to text with customizable features.
+## Lorem Ipsum Baked Into Your Views
+Generate lorem ipsum text directly from your app. No need to cut and paste from other websites.

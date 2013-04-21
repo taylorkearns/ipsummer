@@ -1,11 +1,21 @@
 class Text
-  attr_reader :output
+  attr_reader :source, :path
 
-  def initialize(title)
-    @file = File.expand_path "text/#{title}.txt"
+  def generate
+    text = randomize(File.read(path))
   end
 
-  def output
-    File.read @file
+  private
+
+  def randomize(string)
+    string.split(/\.\s/).shuffle.join('. ') + '.'
+  end
+
+  def path
+    File.expand_path "text/#{source}"
+  end
+
+  def source
+    'lorem-ipsum.txt'
   end
 end

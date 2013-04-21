@@ -1,23 +1,31 @@
+require_relative 'text.rb'
+
 class Ipsum
-  def self.paragraphs(options={})
-    ParagraphGenerator.new(options).generate 
+  def self.paragraphs(args={})
+    Paragraphs.new(args).generate
   end
 end
 
-class ParagraphGenerator
-  attr_reader :count, :min_length, :max_length, :links
+class Paragraphs
+  attr_reader :count, :min_sentences, :max_sentences, :links
 
-  def initialize(options)
-    @count = options[:count] || 1
-    @min_length = options[:min_length] || 300
-    @max_length = options[:max_length] || 600
-    @links = options[:links] || false
+  def initialize(args)
+    @count = args[:count] || 1
+    @min_sentences = args[:min_sentences] || 2
+    @max_sentences = args[:max_sentences] || 5
+    @links = args[:links] || false
   end
 
   def generate
-    { count: count, min_length: min_length, max_length: max_length, links: links }
+    text = Text.new.generate
+  end
+
+  private
+
+  def length
+    rand min_sentences..max_sentences
   end
 end
 
-result = Ipsum.paragraphs count: 3, min_length: 200, max_length: 500, links: true
+result = Ipsum.paragraphs
 p result
