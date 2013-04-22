@@ -1,23 +1,21 @@
 require_relative 'text.rb'
 
 class Ipsum
-  def self.paragraphs(args={})
-    Paragraphs.new(args).generate
+  def self.paragraph(options={})
+    Paragraph.new(options).generate
   end
 end
 
-class Paragraphs
+class Paragraph
   attr_reader :count, :min_sentences, :max_sentences, :links
 
-  def initialize(args)
-    @count = args[:count] || 1
-    @min_sentences = args[:min_sentences] || 2
-    @max_sentences = args[:max_sentences] || 5
-    @links = args[:links] || false
+  def initialize(options={})
+    @min_sentences = options[:min_sentences] || 5
+    @max_sentences = options[:max_sentences] || 10
   end
 
   def generate
-    text = Text.new.generate
+    text.split(/\.\s/).first(length).join('. ') + '.'
   end
 
   private
@@ -25,7 +23,11 @@ class Paragraphs
   def length
     rand min_sentences..max_sentences
   end
+
+  def text
+    Text.new.generate
+  end
 end
 
-result = Ipsum.paragraphs
-p result
+paragraph = Ipsum.paragraph
+p paragraph
