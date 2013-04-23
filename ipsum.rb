@@ -1,7 +1,7 @@
 require_relative 'text.rb'
 
 class Ipsum
-  def self.paragraph(options={})
+  def paragraph(options={})
     Paragraph.new(options).generate
   end
 end
@@ -29,5 +29,6 @@ class Paragraph
   end
 end
 
-paragraph = Ipsum.paragraph
+ipsum = Ipsum.new
+paragraph = ipsum.paragraph
 p paragraph

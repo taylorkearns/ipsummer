@@ -35,7 +35,7 @@ describe Paragraph do
     end
 
     context 'with maximum and minimum sentences options' do
-      it 'returns a paragraph with at most the maximum number of sentences' do
+      it 'returns a paragraph with a number of sentences within the requested range' do
         paragraph = Paragraph.new min_sentences: 7, max_sentences: 10
 
         p = paragraph.generate
