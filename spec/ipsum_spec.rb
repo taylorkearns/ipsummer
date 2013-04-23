@@ -10,7 +10,7 @@ describe Paragraph do
 
         p = paragraph.generate
 
-        sentence_count(p).should be_within(5).of(3)
+        sentence_count(p).should be_within(5).of(5)
       end
     end
 

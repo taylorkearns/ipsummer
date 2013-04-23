@@ -7,7 +7,7 @@ class Ipsum
 end
 
 class Paragraph
-  attr_reader :count, :min_sentences, :max_sentences, :links
+  attr_reader :min_sentences, :max_sentences
 
   def initialize(options={})
     @min_sentences = options[:min_sentences] || 5
