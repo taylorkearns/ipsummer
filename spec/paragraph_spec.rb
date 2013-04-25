@@ -1,6 +1,5 @@
-require 'debugger'
 require 'spec_helper'
-require_relative '../ipsum.rb'
+require_relative '../paragraph.rb'
 
 describe Paragraph do
   describe '#generate' do

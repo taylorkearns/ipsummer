@@ -1,34 +1,21 @@
-require_relative 'text.rb'
+require_relative 'haml_paragraph.rb'
+require_relative 'html_paragraph.rb'
 
 class Ipsum
   def paragraph(options={})
     Paragraph.new(options).generate
   end
-end
 
-class Paragraph
-  attr_reader :min_sentences, :max_sentences
-
-  def initialize(options={})
-    @min_sentences = options[:min_sentences] || 5
-    @max_sentences = options[:max_sentences] || 10
+  def html_paragraph(options={})
+    HtmlParagraph.new(options).generate
   end
 
-  def generate
-    text.split(/\.\s/).first(length).join('. ') + '.'
-  end
-
-  private
-
-  def length
-    rand min_sentences..max_sentences
-  end
-
-  def text
-    Text.new.generate
+  def haml_paragraph(options={})
+    HamlParagraph.new(options).generate
   end
 end
 
 ipsum = Ipsum.new
 paragraph = ipsum.paragraph
-p paragraph
+haml_paragraph = ipsum.haml_paragraph
+html_paragraph = ipsum.html_paragraph
