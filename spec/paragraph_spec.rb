@@ -2,12 +2,12 @@ require 'spec_helper'
 require_relative '../paragraph.rb'
 
 describe Paragraph do
-  describe '#generate' do
+  describe '#paragraph' do
     context 'with no options' do
       it 'returns a paragraph with the default number of sentences' do
         paragraph = Paragraph.new
 
-        p = paragraph.generate
+        p = paragraph.paragraph
 
         sentence_count(p).should be_within(5).of(5)
       end
@@ -17,7 +17,7 @@ describe Paragraph do
       it 'returns a paragraph with at least the minimum number of sentences' do
         paragraph = Paragraph.new min_sentences: 5
 
-        p = paragraph.generate
+        p = paragraph.paragraph
 
         sentence_count(p).should >= 5
       end
@@ -27,7 +27,7 @@ describe Paragraph do
       it 'returns a paragraph with at most the maximum number of sentences' do
         paragraph = Paragraph.new max_sentences: 10
 
-        p = paragraph.generate
+        p = paragraph.paragraph
 
         sentence_count(p).should <= 10
       end
@@ -37,7 +37,7 @@ describe Paragraph do
       it 'returns a paragraph with a number of sentences within the requested range' do
         paragraph = Paragraph.new min_sentences: 7, max_sentences: 10
 
-        p = paragraph.generate
+        p = paragraph.paragraph
 
         sentence_count(p).should >= 7 
         sentence_count(p).should <= 10

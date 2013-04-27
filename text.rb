@@ -1,8 +1,8 @@
 class Text
   attr_reader :source, :path
 
-  def generate
-    text = randomize(File.read(path))
+  def sentences
+    randomize(File.read(path))
   end
 
   private

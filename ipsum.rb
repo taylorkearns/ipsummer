@@ -3,17 +3,17 @@ require_relative 'html_paragraph.rb'
 
 class Ipsum
   def paragraph(options={})
-    Paragraph.new(options).generate
+    Paragraph.new(options).paragraph
   end
   alias :p :paragraph
 
   def html_paragraph(options={})
-    HtmlParagraph.new(options).generate
+    HtmlParagraph.new(options).html
   end
   alias :htmlp :html_paragraph
 
   def haml_paragraph(options={})
-    HamlParagraph.new(options).generate
+    HamlParagraph.new(options).haml
   end
   alias :hamlp :haml_paragraph
 end
