@@ -5,17 +5,20 @@ class Ipsum
   def paragraph(options={})
     Paragraph.new(options).generate
   end
+  alias :p :paragraph
 
   def html_paragraph(options={})
     HtmlParagraph.new(options).generate
   end
+  alias :htmlp :html_paragraph
 
   def haml_paragraph(options={})
     HamlParagraph.new(options).generate
   end
+  alias :hamlp :haml_paragraph
 end
 
 ipsum = Ipsum.new
-paragraph = ipsum.paragraph
-haml_paragraph = ipsum.haml_paragraph
-html_paragraph = ipsum.html_paragraph
+p = ipsum.p
+hamlp = ipsum.hamlp
+htmlp = ipsum.htmlp
