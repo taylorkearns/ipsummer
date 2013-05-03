@@ -8,12 +8,9 @@ class HamlParagraph
     @links = options[:links]
   end
 
-  def haml
-    if links?
-      return "%p\s\n\s\s#{paragraph_with_links}"
-    end
-
-    "%p\s#{paragraph}"
+  def complete_paragraph
+    return linked_paragraph if links?
+    plain_paragraph
   end
 
   private
@@ -22,16 +19,30 @@ class HamlParagraph
     links || false
   end
 
-  def paragraph_with_links
-    phrases.map { |phrase| phrase_with_link phrase }.join(' ').gsub(/\w\z/, 't.')
+  def plain_paragraph
+    "%p\s#{paragraph}"
+  end
+
+  def linked_paragraph
+    linked_paragraph = phrases.map { |phrase| phrase_with_link phrase }.join(' ').gsub(/\w\z/, 't.')
+    wrapped_paragraph(linked_paragraph)
+  end
+
+  def wrapped_paragraph(p)
+    "%p\s\n\s\s#{p}"
   end
 
   def phrase_with_link(phrase)
     words = phrase.split
     position = rand words.count
     length = [1, 2, 3].sample
-    words[position, length] = "\n\s\s%a\s#{words[position, length].join(' ').gsub(/[\.,\?!]/, '')}\n"
+    selected_words = words[position, length].join(' ').gsub(/[\.,\?!]/, '')
+    words[position, length] = linked_words(selected_words)
     words.join(' ')
+  end
+
+  def linked_words(w)
+    "\n\s\s%a\s#{w}\n"
   end
 
   def phrases
