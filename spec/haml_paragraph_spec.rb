@@ -2,17 +2,19 @@ require 'spec_helper'
 require_relative '../haml_paragraph.rb'
 
 describe HamlParagraph do
-  describe '#complete_paragraph' do
+  describe '#wrapped_text' do
     it 'returns a HAML paragraph' do
-      haml_p = HamlParagraph.new
+      paragraph = Paragraph.new
+      haml_paragraph = HamlParagraph.new paragraph
 
-      haml_p.complete_paragraph.should match /^(%p\s)/
+      haml_paragraph.wrapped_text.should match /^(%p\n)/
     end
 
     it 'returns a HAML paragraph with links if links kwarg is passed' do
-      haml_p = HamlParagraph.new links: true
+      paragraph = Paragraph.new
+      haml_paragraph = HamlParagraph.new paragraph, links: true
 
-      haml_p.complete_paragraph.should match /\n\s\s%a\s/
+      haml_paragraph.wrapped_text.should match /\n\s\s%a\s/
     end
   end
 end

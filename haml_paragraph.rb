@@ -1,57 +1,54 @@
 require_relative 'paragraph.rb'
 
 class HamlParagraph
-  attr_accessor :paragraph, :links
+  attr_reader :paragraph, :links
 
-  def initialize(options={})
-    @paragraph = Paragraph.new(min_sentences: options[:min_sentences], max_sentences: options[:max_sentences]).paragraph
+  def initialize(paragraph, options={})
+    @paragraph = paragraph
     @links = options[:links]
+
+    puts wrapped_text
   end
 
-  def complete_paragraph
-    return linked_paragraph if links?
-    plain_paragraph
+  def wrapped_text
+    "%p\n\s\s#{complete_paragraph}"
   end
 
   private
+
+  def complete_paragraph
+    return linked_paragraph if links?
+    paragraph.text
+  end
 
   def links?
     links || false
   end
 
-  def plain_paragraph
-    "%p\s#{paragraph}"
-  end
-
   def linked_paragraph
     linked_paragraph = phrases.map { |phrase| phrase_with_link phrase }.join(' ').gsub(/\w\z/, 't.')
-    wrapped_paragraph(linked_paragraph)
-  end
-
-  def wrapped_paragraph(p)
-    "%p\s\n\s\s#{p}"
-  end
-
-  def phrase_with_link(phrase)
-    words = phrase.split
-    position = rand words.count
-    length = [1, 2, 3].sample
-    selected_words = words[position, length].join(' ').gsub(/[\.,\?!]/, '')
-    words[position, length] = linked_words(selected_words)
-    words.join(' ')
-  end
-
-  def linked_words(w)
-    "\n\s\s%a\s#{w}\n"
   end
 
   def phrases
     phrases = []
     remaining_words = words
-    link_count.times do
+    until remaining_words.empty? do
       phrases << remaining_words.slice!(0, break_point)
     end
     phrases.map { |phrase| phrase.join(' ') }
+  end
+
+  def phrase_with_link(phrase)
+    phrase_words = phrase.split
+    position = rand phrase_words.count
+    length = [1, 2, 3].sample
+    selected_words = phrase_words[position, length].join(' ').gsub(/[\.,\?!]/, '')
+    phrase_words[position, length] = linked_words(selected_words)
+    phrase_words.join(' ')
+  end
+
+  def linked_words(w)
+    "\n\s\s%a\s#{w}\n"
   end
 
   def break_point
@@ -59,10 +56,10 @@ class HamlParagraph
   end
 
   def link_count
-    link_count = (words.count/20).ceil
+    link_count = (words.count/20.0).ceil
   end
 
   def words
-    paragraph.split
+    paragraph.words
   end
 end

@@ -1,19 +1,35 @@
+require_relative 'paragraph.rb'
+require_relative 'text_paragraph.rb'
 require_relative 'haml_paragraph.rb'
 require_relative 'html_paragraph.rb'
 
 class Ipsum
-  def paragraph(options={})
-    Paragraph.new(options).paragraph
+  def text_paragraph(options={})
+    min_sentences = options[:min_sentences]
+    max_sentences = options[:max_sentences]
+
+    TextParagraph.new(Paragraph.new(min_sentences: min_sentences, max_sentences: max_sentences))
   end
-  alias :p :paragraph
 
   def html_paragraph(options={})
-    HtmlParagraph.new(options).html
+    min_sentences = options[:min_sentences]
+    max_sentences = options[:max_sentences]
+    links = options[:links]
+
+    HtmlParagraph.new(Paragraph.new(min_sentences: min_sentences, max_sentences: max_sentences), links: links)
   end
-  alias :html_p :html_paragraph
 
   def haml_paragraph(options={})
-    HamlParagraph.new(options).haml
+    min_sentences = options[:min_sentences]
+    max_sentences = options[:max_sentences]
+    links = options[:links]
+
+    HamlParagraph.new(Paragraph.new(min_sentences: min_sentences, max_sentences: max_sentences), links: links)
   end
-  alias :haml_p :haml_paragraph
+
+  private
+
+  def paragraph
+    Paragraph.new(options={})
+  end
 end
