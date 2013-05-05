@@ -33,3 +33,7 @@ class Ipsum
     Paragraph.new(options={})
   end
 end
+
+ipsum = Ipsum.new
+ipsum.html_paragraph links: true
+ipsum.haml_paragraph min_sentences: 3, max_sentences: 4

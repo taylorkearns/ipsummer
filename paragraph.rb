@@ -18,15 +18,6 @@ class Paragraph
 
   private
 
-  def phrases
-    phrases = []
-    remaining_words = words
-    link_count.times do
-      phrases << remaining_words.slice!(0, break_point)
-    end
-    phrases.map { |phrase| phrase.join(' ') }
-  end
-
   def length
     rand min_sentences..max_sentences
   end
