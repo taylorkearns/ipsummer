@@ -41,13 +41,13 @@ describe Paragraph do
     end
   end
 
-  describe '#words' do
-    it 'splits the text into an array of words' do
-      paragraph = Paragraph.new
+  #describe '#words' do
+    #it 'splits the text into an array of words' do
+      #paragraph = Paragraph.new
 
-      paragraph.words.should be_an Array
-    end
-  end
+      #paragraph.words.should be_an Array
+    #end
+  #end
 end
 
 def sentence_count(str)

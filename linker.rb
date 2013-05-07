@@ -1,13 +1,16 @@
-module Linkable
-  private
+class Linker
+  attr_accessor :paragraph, :wrapper
 
-  def links?
-    links || false
+  def initialize(options={})
+    @paragraph = options[:paragraph]
+    @wrapper = options[:wrapper]
   end
 
   def linked_paragraph
-    linked_paragraph = phrases.map { |phrase| phrase_with_link phrase }.join(' ').gsub(/\w\z/, 't.')
+    phrases.map { |phrase| phrase_with_link phrase }.join(' ').gsub(/\w\z/, 't.')
   end
+
+  private
 
   def phrases
     phrases = []
@@ -36,6 +39,10 @@ module Linkable
   end
 
   def words
-    paragraph.words
+    paragraph.text.split
+  end
+
+  def linked_words(w)
+    wrapper.linked_words w
   end
 end

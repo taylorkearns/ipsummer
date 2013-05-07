@@ -1,30 +1,35 @@
 require_relative 'paragraph.rb'
-require_relative 'modules/linkable'
+require_relative 'linker.rb'
+require_relative 'html_wrapper'
 
 class HtmlParagraph
-  include Linkable
-
   attr_reader :paragraph, :links
 
-  def initialize(paragraph, options={})
-    @paragraph = paragraph
+  def initialize(options={})
+    @paragraph = options[:paragraph]
     @links = options[:links]
 
-    puts wrapped_text
+    puts wrapped_paragraph
   end
 
-  def wrapped_text
+  def wrapped_paragraph
     "<p>#{complete_paragraph}</p>"
   end
 
   private
 
   def complete_paragraph
-    return linked_paragraph if links?
-    paragraph.text
+    if links?
+      Linker.new(paragraph: paragraph, wrapper: HtmlWrapper.new).linked_paragraph
+    else
+      paragraph.text
+    end
   end
 
-  def linked_words(w)
-    "<a>#{w}</a>"
+  def links?
+    links || false
   end
 end
+
+HtmlParagraph.new(paragraph: Paragraph.new)
+HtmlParagraph.new(paragraph: Paragraph.new, links: true)

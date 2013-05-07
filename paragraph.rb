@@ -12,10 +12,6 @@ class Paragraph
     sentences.split(/\.\s/).first(length).join('. ') + '.'
   end
 
-  def words
-    text.split
-  end
-
   private
 
   def length
