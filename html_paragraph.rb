@@ -30,6 +30,3 @@ class HtmlParagraph
     links || false
   end
 end
-
-HtmlParagraph.new(paragraph: Paragraph.new)
-HtmlParagraph.new(paragraph: Paragraph.new, links: true)

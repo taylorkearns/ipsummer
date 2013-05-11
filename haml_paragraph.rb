@@ -30,6 +30,3 @@ class HamlParagraph
     links || false
   end
 end
-
-HamlParagraph.new(paragraph: Paragraph.new)
-HamlParagraph.new(paragraph: Paragraph.new, links: true)

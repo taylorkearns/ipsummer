@@ -3,13 +3,13 @@ require_relative 'paragraph.rb'
 class TextParagraph
   attr_reader :paragraph
 
-  def initialize(paragraph, options={})
-    @paragraph = paragraph
+  def initialize(options={})
+    @paragraph = options[:paragraph]
 
-    puts wrapped_text
+    puts wrapped_paragraph
   end
 
-  def wrapped_text
+  def wrapped_paragraph
     paragraph.text
   end
 end
