@@ -5,35 +5,46 @@ require_relative 'html_paragraph.rb'
 
 class Ipsum
   def text_paragraph(options={})
-    min_sentences = options[:min_sentences]
-    max_sentences = options[:max_sentences]
+    paragraph = Paragraph.new(
+                  min_sentences: options[:min_sentences],
+                  max_sentences: options[:max_sentences])
 
-    TextParagraph.new(Paragraph.new(min_sentences: min_sentences, max_sentences: max_sentences))
+    TextParagraph.new(paragraph: paragraph)
   end
 
   def html_paragraph(options={})
-    min_sentences = options[:min_sentences]
-    max_sentences = options[:max_sentences]
+    paragraph = Paragraph.new(
+                  min_sentences: options[:min_sentences],
+                  max_sentences: options[:max_sentences])
     links = options[:links]
 
-    HtmlParagraph.new(Paragraph.new(min_sentences: min_sentences, max_sentences: max_sentences), links: links)
+    HtmlParagraph.new(paragraph: paragraph, links: links)
   end
 
   def haml_paragraph(options={})
-    min_sentences = options[:min_sentences]
-    max_sentences = options[:max_sentences]
+    paragraph = Paragraph.new(
+                  min_sentences: options[:min_sentences],
+                  max_sentences: options[:max_sentences])
     links = options[:links]
 
-    HamlParagraph.new(Paragraph.new(min_sentences: min_sentences, max_sentences: max_sentences), links: links)
+    HamlParagraph.new(paragraph: paragraph, links: links)
   end
 
   private
 
   def paragraph
-    Paragraph.new(options={})
+    Paragraph.new(
+      min_sentences: options[:min_sentences],
+      max_sentences: options[:max_sentences])
   end
 end
 
 ipsum = Ipsum.new
-ipsum.html_paragraph links: true
-ipsum.haml_paragraph min_sentences: 3, max_sentences: 4
+ipsum.text_paragraph
+ipsum.text_paragraph min_sentences: 3, max_sentences: 4
+
+ipsum.html_paragraph
+ipsum.html_paragraph links: true, min_sentences: 3, max_sentences: 4
+
+ipsum.haml_paragraph
+ipsum.haml_paragraph min_sentences: 3, max_sentences: 4, links: true
