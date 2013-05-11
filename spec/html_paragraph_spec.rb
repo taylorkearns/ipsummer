@@ -9,13 +9,5 @@ describe HtmlParagraph do
 
       html_paragraph.wrapped_paragraph.should match /^(<p>.*<\/p>)$/
     end
-
-    it 'returns an HTML paragraph with links when a links kwarg is passed' do
-      paragraph = Paragraph.new
-      html_paragraph = HtmlParagraph.new(paragraph: paragraph, links: true)
-
-      html_paragraph.wrapped_paragraph.should match /^(<p>.*<\/p>)$/
-      html_paragraph.wrapped_paragraph.should match /(<a>.*<\/a>)/
-    end
   end
 end
