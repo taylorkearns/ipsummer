@@ -2,13 +2,21 @@ class Text
   attr_reader :source, :path
 
   def sentences
-    randomize(File.read(path))
+    randomize_sentences(File.read(path))
+  end
+
+  def words
+    randomize_words(File.read(path))
   end
 
   private
 
-  def randomize(string)
-    string.split(/\.\s/).shuffle.join('. ') + '.'
+  def randomize_sentences(string)
+    string.split(/\.\s/).shuffle
+  end
+
+  def randomize_words(string)
+    string.gsub(/[\.,\?]/, '').split().shuffle
   end
 
   def path

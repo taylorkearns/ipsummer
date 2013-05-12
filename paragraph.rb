@@ -1,7 +1,7 @@
 require_relative 'text.rb'
 
 class Paragraph
-  attr_reader :min_sentences, :max_sentences, :words
+  attr_reader :min_sentences, :max_sentences
 
   def initialize(options={})
     @min_sentences = options[:min_sentences] || 5
@@ -9,7 +9,7 @@ class Paragraph
   end
 
   def text
-    sentences.split(/\.\s/).first(length).join('. ') + '.'
+    sentences.first(length).join('. ') + '.'
   end
 
   private
