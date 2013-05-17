@@ -53,26 +53,23 @@ describe Headline do
       end
     end
 
-    context 'with a max words argument' do
+    context 'with a max words argument that is >= default min' do
+      before { @headline = Headline.new max_words: 7 }
 
-      context 'with a max words argument that is >= default min' do
-        before { @headline = Headline.new max_words: 7 }
-
-        it 'has a word count <= the max argument' do
-          word_count(@headline.complete_text).should <= 7
-        end
-
-        it 'has a word count >= the default min' do
-          word_count(@headline.complete_text).should >= 3
-        end
+      it 'has a word count <= the max argument' do
+        word_count(@headline.complete_text).should <= 7
       end
 
-      context 'with a max words argument that is < the default min' do
-        before { @headline = Headline.new max_words: 2 }
+      it 'has a word count >= the default min' do
+        word_count(@headline.complete_text).should >= 3
+      end
+    end
 
-        it 'has a word count <= the max argument' do
-          word_count(@headline.complete_text).should <= 2
-        end
+    context 'with a max words argument that is < the default min' do
+      before { @headline = Headline.new max_words: 2 }
+
+      it 'has a word count <= the max argument' do
+        word_count(@headline.complete_text).should <= 2
       end
     end
 

@@ -1,11 +1,14 @@
 require_relative 'text.rb'
+require_relative 'lengthable.rb'
 
 class Paragraph
-  attr_reader :min_sentences, :max_sentences
+  include Lengthable
+
+  attr_reader :min, :max
 
   def initialize(options={})
-    @min_sentences = options[:min_sentences] || 5
-    @max_sentences = options[:max_sentences] || 10
+    @min = options[:min_sentences]
+    @max = options[:max_sentences]
   end
 
   def text
@@ -14,8 +17,20 @@ class Paragraph
 
   private
 
-  def length
-    rand min_sentences..max_sentences
+  def default_min
+    5
+  end
+
+  def default_max
+    10
+  end
+
+  def low_limit
+    1
+  end
+
+  def high_limit
+    100
   end
 
   def sentences

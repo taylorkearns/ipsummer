@@ -45,14 +45,14 @@ class Ipsum
 end
 
 ipsum = Ipsum.new
-#ipsum.text_paragraph
-#ipsum.text_paragraph min_sentences: 3, max_sentences: 4
+ipsum.text_paragraph
+ipsum.text_paragraph min_sentences: 3, max_sentences: 4
 
-#ipsum.html_paragraph
-#ipsum.html_paragraph links: true, min_sentences: 3, max_sentences: 4
+ipsum.html_paragraph
+ipsum.html_paragraph links: true, min_sentences: 3, max_sentences: 4
 
-#ipsum.haml_paragraph
-#ipsum.haml_paragraph min_sentences: 3, max_sentences: 4, links: true
+ipsum.haml_paragraph
+ipsum.haml_paragraph min_sentences: 3, max_sentences: 4, links: true
 
 ipsum.headline min_words: 3, max_words: 4
 ipsum.headline period: true
