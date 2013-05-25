@@ -1,8 +1,8 @@
 class Linker
-  attr_accessor :paragraph, :wrapper
+  attr_accessor :paragraph_text, :wrapper
 
   def initialize(options={})
-    @paragraph = options[:paragraph]
+    @paragraph_text = options[:paragraph_text]
     @wrapper = options[:wrapper]
   end
 
@@ -39,7 +39,7 @@ class Linker
   end
 
   def words
-    paragraph.text.split
+    paragraph_text.text.split
   end
 
   def linked_words(w)

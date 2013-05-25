@@ -1,25 +1,12 @@
 require 'spec_helper'
 require_relative '../lib/ipsummer/linker.rb'
-require_relative '../lib/ipsummer/haml_wrapper.rb'
+require_relative '../lib/ipsummer/paragraph_text.rb'
 
 describe Linker do
-  describe '#linked_paragraph' do
-    context 'with a HAML paragraph' do
-      it 'returns a HAML paragraph with links' do
-        paragraph = Paragraph.new
-        linker = Linker.new(paragraph: paragraph, wrapper: HamlWrapper.new)
+  it 'returns an HTML paragraph with links' do
+    paragraph_text = ParagraphText.new
+    linker = Linker.new(paragraph_text: paragraph_text, wrapper: HtmlWrapper.new)
 
-        linker.linked_paragraph.should match /\n\s\s%a\s/
-      end
-    end
-
-    context 'with an HTML paragraph' do
-      it 'returns an HTML paragraph with links' do
-        paragraph = Paragraph.new
-        linker = Linker.new(paragraph: paragraph, wrapper: HtmlWrapper.new)
-
-        linker.linked_paragraph.should match /(<a>.*<\/a>)/
-      end
-    end
+    linker.linked_paragraph.should match /(<a>.*<\/a>)/
   end
 end

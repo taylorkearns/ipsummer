@@ -2,10 +2,10 @@ require_relative 'linker.rb'
 require_relative 'html_wrapper'
 
 class Paragraph
-  attr_reader :paragraph, :links
+  attr_reader :paragraph_text, :links
 
   def initialize(options={})
-    @paragraph = options[:paragraph]
+    @paragraph_text = options[:paragraph_text]
     @links = options[:links]
   end
 
@@ -21,9 +21,9 @@ class Paragraph
 
   def complete_paragraph
     if links?
-      Linker.new(paragraph: paragraph, wrapper: HtmlWrapper.new).linked_paragraph
+      Linker.new(paragraph_text: paragraph_text, wrapper: HtmlWrapper.new).linked_paragraph
     else
-      paragraph.text
+      paragraph_text.text
     end
   end
 
