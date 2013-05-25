@@ -11,7 +11,7 @@ class Headline
     @max = options[:max_words]
     @period = options[:period] || false
 
-    puts complete_text
+    complete_text
   end
 
   def complete_text

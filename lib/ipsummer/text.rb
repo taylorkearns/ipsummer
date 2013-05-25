@@ -1,12 +1,16 @@
+require_relative 'text_source'
+
 class Text
-  attr_reader :source, :path
+  include TextSource
+
+  attr_reader :source
 
   def sentences
-    randomize_sentences(File.read(path))
+    randomize_sentences source
   end
 
   def words
-    randomize_words(File.read(path))
+    randomize_words source
   end
 
   private
@@ -19,11 +23,7 @@ class Text
     string.gsub(/[\.,\?]/, '').split().shuffle
   end
 
-  def path
-    File.expand_path "text/#{source}"
-  end
-
   def source
-    'lorem-ipsum.txt'
+    lorem_ipsum
   end
 end

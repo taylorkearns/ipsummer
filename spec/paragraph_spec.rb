@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../paragraph.rb'
+require_relative '../lib/ipsummer/paragraph.rb'
 
 describe Paragraph do
   describe '#text' do

@@ -1,6 +1,6 @@
 require 'debugger'
 require 'spec_helper'
-require_relative '../headline.rb'
+require_relative '../lib/ipsummer/headline.rb'
 
 describe Headline do
   describe '#complete_text' do

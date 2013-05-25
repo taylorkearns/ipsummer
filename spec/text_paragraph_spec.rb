@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../text_paragraph.rb'
+require_relative '../lib/ipsummer/text_paragraph.rb'
 
 describe TextParagraph do
   describe '#wrapped_paragraph' do

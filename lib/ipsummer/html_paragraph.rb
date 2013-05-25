@@ -9,11 +9,12 @@ class HtmlParagraph
     @paragraph = options[:paragraph]
     @links = options[:links]
 
-    puts wrapped_paragraph
+    wrapped_paragraph
   end
 
   def wrapped_paragraph
     "<p>#{complete_paragraph}</p>"
+    #"raw(<p>#{complete_paragraph}</p>)"
   end
 
   private

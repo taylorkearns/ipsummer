@@ -9,11 +9,12 @@ class HamlParagraph
     @paragraph = options[:paragraph]
     @links = options[:links]
 
-    puts wrapped_paragraph
+    wrapped_paragraph
   end
 
   def wrapped_paragraph
     "%p\n\s\s#{complete_paragraph}"
+    #"raw(%p\n\s\s#{complete_paragraph})"
   end
 
   private

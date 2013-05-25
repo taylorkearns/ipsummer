@@ -1,3 +1,31 @@
-## Lorem Ipsum Directly Into Your Views
+# ipsummer
 
-Gem that creates lorem ipsum paragraphs and headlines in HTML, Haml, or plain text. Customizable features like length parameters and links. No more copying and pasting from the web.
+## Lorem Ipsum Injected Directly Into Your Views
+
+Easily create lorem ipsum paragraphs and headlines from your web views. Customize length parameters and add links if desired.
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'ipsummer'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install ipsummer
+
+## Usage
+
+TODO: Write usage instructions here
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request

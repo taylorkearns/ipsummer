@@ -1,6 +1,6 @@
 require 'spec_helper'
-require_relative '../linker.rb'
-require_relative '../haml_wrapper.rb'
+require_relative '../lib/ipsummer/linker.rb'
+require_relative '../lib/ipsummer/haml_wrapper.rb'
 
 describe Linker do
   describe '#linked_paragraph' do

@@ -6,7 +6,7 @@ class TextParagraph
   def initialize(options={})
     @paragraph = options[:paragraph]
 
-    puts wrapped_paragraph
+    wrapped_paragraph
   end
 
   def wrapped_paragraph
