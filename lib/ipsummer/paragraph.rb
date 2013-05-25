@@ -1,39 +1,33 @@
-require_relative 'text.rb'
-require_relative 'lengthable.rb'
+require_relative 'linker.rb'
+require_relative 'html_wrapper'
 
 class Paragraph
-  include Lengthable
-
-  attr_reader :min, :max
+  attr_reader :paragraph, :links
 
   def initialize(options={})
-    @min = options[:min_sentences]
-    @max = options[:max_sentences]
+    @paragraph = options[:paragraph]
+    @links = options[:links]
   end
 
-  def text
-    sentences.first(length).join('. ') + '.'
+  def unwrapped_paragraph
+    complete_paragraph
+  end
+
+  def rails_wrapped_paragraph
+    "raw(<p>#{complete_paragraph}</p>)"
   end
 
   private
 
-  def default_min
-    5
+  def complete_paragraph
+    if links?
+      Linker.new(paragraph: paragraph, wrapper: HtmlWrapper.new).linked_paragraph
+    else
+      paragraph.text
+    end
   end
 
-  def default_max
-    10
-  end
-
-  def low_limit
-    1
-  end
-
-  def high_limit
-    100
-  end
-
-  def sentences
-    Text.new.sentences
+  def links?
+    links || false
   end
 end
