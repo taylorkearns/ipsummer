@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'action_view'
 require_relative 'linker.rb'
 require_relative 'html_wrapper'
 
