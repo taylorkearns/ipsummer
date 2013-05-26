@@ -13,7 +13,7 @@ class Paragraph
     complete_paragraph
   end
 
-  def rails_wrapped_paragraph
+  def rails_paragraph
     "raw(<p>#{complete_paragraph}</p>)"
   end
 
