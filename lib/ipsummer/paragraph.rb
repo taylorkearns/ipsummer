@@ -10,11 +10,11 @@ class Paragraph
   end
 
   def unwrapped_paragraph
-    complete_paragraph
+    raw complete_paragraph
   end
 
-  def rails_paragraph
-    "raw(<p>#{complete_paragraph}</p>)"
+  def wrapped_paragraph
+    raw "<p>#{complete_paragraph}</p>"
   end
 
   private
