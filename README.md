@@ -30,9 +30,12 @@ Create a paragraph by calling `Ipsummer.paragraph`. To customize the number of s
 
 If you only want the paragraph content but not the wrapping `<p>` tags, call `Ipsummer.unwrapped_paragraph`.
 
-    <p><%= Ipsummer.unwrapped_paragraph %></p>
+    <p>
+      <strong><%= Ipsummer.unwrapped_paragraph %></strong>
+    </p>
 
-    %p= Ipsummer.unwrapped_paragraph min_sentences: 8
+    %p
+      %em= Ipsummer.unwrapped_paragraph min_sentences: 8
 
 Create a headline by calling `Ipsummer.headline`. To specify the heading level, pass the level number (1-6) to `level`. To customize the number of words in the headline, pass the `min_words` and/or `max_words` argument. To add a period at the end of the headline, pass `period: true`.
 
@@ -46,9 +49,11 @@ Create a headline by calling `Ipsummer.headline`. To specify the heading level, 
 
 If you only want the headline content but not the wrapping `<h*>` tags, call `Ipsummer.unwrapped_headline`.
 
-    <h2><%= Ipsummer.unwrapped_headline min_words: 3, max_words: 4 %></h2>
+    <h2>
+      <quote><%= Ipsummer.unwrapped_headline min_words: 3, max_words: 4 %></quote>
+    </h2>
 
-    %h2= Ipsummer.unwrapped_headline level: 3
+    %li= Ipsummer.unwrapped_headline level: 3, period: true
 
 ## Contributing
 
