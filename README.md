@@ -18,29 +18,37 @@ Or install it yourself as:
 
 ## Usage
 
-Create a paragraph (multiple sentences) inside HTML or Haml tags by calling `Ipsummer.paragraph`. To customize the number of sentences in the paragraph, pass the `min_sentences` and/or `max_sentences` argument. To add links into the text, pass `links: true`.
+Create a paragraph by calling `Ipsummer.paragraph`. To customize the number of sentences in the paragraph, pass the `min_sentences` and/or `max_sentences` argument. To add links into the text, pass `links: true`.
 
-    <p><%= Ipsummer.paragraph %></p>
+    <%= Ipsummer.paragraph %>
 
-    <p><%= Ipsummer.paragraph min_sentences: 8 %></p>
+    <%= Ipsummer.paragraph min_sentences: 8 %>
 
-    %p= Ipsummer.paragraph links: true
+    = Ipsummer.paragraph links: true
 
-    %p= Ipsummer.paragraph min_sentences: 3, max_sentences: 5
+    = Ipsummer.paragraph min_sentences: 3, max_sentences: 5, links: true
 
-If you are in a Rails view, you may alternatively forgo writing the paragraph tags and instead use the `Ipsummer.rails_paragraph` method. This method incorporates the Rails `raw` helper to escape the HTML.
+If you only want the paragraph content but not the wrapping `<p>` tags, call `Ipsummer.unwrapped_paragraph`.
 
-    <%= Ipsummer.rails_paragraph links: true %>
+    <p><%= Ipsummer.unwrapped_paragraph %></p>
 
-    = Ipsummer.rails_paragraph max_sentences: 4
+    %p= Ipsummer.unwrapped_paragraph min_sentences: 8
 
-Create a headline (a single sentence) inside HTML or Haml tags by calling `Ipsummer.headline`. To customize the number of words in the headline, pass the `min_words` and/or `max_words` argument. To add a period at the end of the headline, pass `period: true`.
+Create a headline by calling `Ipsummer.headline`. To specify the heading level, pass the level number (1-6) to `level`. To customize the number of words in the headline, pass the `min_words` and/or `max_words` argument. To add a period at the end of the headline, pass `period: true`.
 
-    <h2><%= Ipsummer.headline %></h2>
+    <%= Ipsummer.headline %>
 
-    %h2= Ipsummer.headline min_words: 3, max_words: 4
+    <%= Ipsummer.headline min_words: 3, max_words: 4 %>
 
-    <li><%= Ipsummer.headline period: true %></li>
+    = Ipsummer.headline level: 3
+
+    = Ipsummer.headline level: 2, period: true, min_words: 3
+
+If you only want the headline content but not the wrapping `<h*>` tags, call `Ipsummer.unwrapped_headline`.
+
+    <h2><%= Ipsummer.unwrapped_headline min_words: 3, max_words: 4 %></h2>
+
+    %h2= Ipsummer.unwrapped_headline level: 3
 
 ## Contributing
 
