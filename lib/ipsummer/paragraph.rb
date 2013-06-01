@@ -12,11 +12,11 @@ class Paragraph
   end
 
   def unwrapped_paragraph
-    raw complete_paragraph
+    unescaped complete_paragraph
   end
 
   def wrapped_paragraph
-    raw "<p>#{complete_paragraph}</p>"
+    unescaped "<p>#{complete_paragraph}</p>"
   end
 
   private
@@ -31,5 +31,13 @@ class Paragraph
 
   def links?
     links || false
+  end
+
+  def unescaped(str)
+    if str.respond_to? :html_safe
+      str.html_safe
+    else
+      str
+    end
   end
 end
