@@ -4,15 +4,18 @@ require_relative 'ipsummer/headline.rb'
 
 module Ipsummer
   def self.paragraph(options={})
+    get_paragraph options, :wrapped_paragraph
+  end
+  def self.unwrapped_paragraph(options={})
     get_paragraph options, :unwrapped_paragraph
   end
 
-  def self.wrapped_paragraph(options={})
-    get_paragraph options, :wrapped_paragraph
+  def self.headline(options={})
+    Headline.new(options).wrapped_headline
   end
 
-  def self.headline(options={})
-    Headline.new(options).complete_text
+  def self.unwrapped_headline(options={})
+    Headline.new(options).unwrapped_headline
   end
 
   private
