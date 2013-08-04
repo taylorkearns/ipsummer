@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/taylorkearns/ipsummer.png)](https://codeclimate.com/github/taylorkearns/ipsummer)
+
 # Ipsummer
 
 Inject dynamic lorem ipsum directly into your markup with customized length and link options.
