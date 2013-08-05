@@ -7,7 +7,8 @@ class Linker
   end
 
   def linked_paragraph
-    phrases.map { |phrase| phrase_with_link phrase }.join(' ').gsub(/\w\z/, 't.')
+    phrases.map { |phrase| phrase_with_link phrase }
+      .join(' ').gsub(/\w\z/, 't.').gsub(/>\z/, '>.')
   end
 
   private
@@ -25,9 +26,9 @@ class Linker
     phrase_words = phrase.split
     position = rand phrase_words.count
     length = [1, 2, 3].sample
-    selected_words = phrase_words[position, length].join(' ').gsub(/[\.,\?!]/, '')
+    selected_words = phrase_words[position, length].join(' ').gsub(/[,\?!]/, '')
     phrase_words[position, length] = linked_words(selected_words)
-    phrase_words.join(' ')
+    phrase_words.join(' ').gsub(/\.<\/a>/, '</a>.')
   end
 
   def break_point

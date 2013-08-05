@@ -9,7 +9,7 @@ describe Paragraph do
         paragraph_text = ParagraphText.new
         paragraph = Paragraph.new(paragraph_text: paragraph_text)
 
-        paragraph.wrapped_paragraph.should match /<p>.*<\/p>$/
+        paragraph.wrapped_paragraph.should match /<p>.*\.<\/p>$/
       end
     end
 

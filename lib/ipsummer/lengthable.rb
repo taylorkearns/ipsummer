@@ -20,7 +20,7 @@ module Lengthable
       max
     elsif min_no_max? && min > default_max
       high_limit
-    elsif min_and_max? && min <= max
+    elsif min_and_max? && max >= min
       max
     else
       default_max

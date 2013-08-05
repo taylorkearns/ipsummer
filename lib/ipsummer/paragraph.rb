@@ -1,4 +1,3 @@
-require 'rubygems'
 require_relative 'linker.rb'
 require_relative 'html_wrapper'
 
