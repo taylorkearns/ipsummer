@@ -6,18 +6,10 @@ module Lengthable
   def length_min
     if min_no_max?
       min
-    elsif max_no_min?
-      if max < default_min
-        low_limit
-      else
-        default_min
-      end
-    elsif min_and_max?
-      if min <= max
-        min
-      else
-        default_min
-      end
+    elsif max_no_min? && max < default_min
+      low_limit
+    elsif min_and_max? && min <= max
+      min
     else
       default_min
     end
@@ -26,18 +18,10 @@ module Lengthable
   def length_max
     if max_no_min?
       max
-    elsif min_no_max?
-      if min > default_max
-        high_limit
-      else
-        default_max
-      end
-    elsif min_and_max?
-      if min <= max
-        max
-      else
-        default_max
-      end
+    elsif min_no_max? && min > default_max
+      high_limit
+    elsif min_and_max? && min <= max
+      max
     else
       default_max
     end
