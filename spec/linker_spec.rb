@@ -10,7 +10,7 @@ describe Linker do
     end
 
     it 'returns an HTML paragraph with links' do
-      @linker.linked_paragraph.should match /(<a>.*<\/a>)/
+      @linker.linked_paragraph.should match /(<a href="#">.*<\/a>)/
     end
 
     it 'ends in a period' do
